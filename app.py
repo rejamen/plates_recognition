@@ -2,16 +2,17 @@ import logging
 from PIL import Image
 from pytesseract import pytesseract
 
-from flask import Flask, request
+from flask import Flask, render_template, request
 
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
+app.static_folder = 'static'
 
 
 @app.route('/')
 def index():
-    return {'message': 'Hello Flask :D'}
+    return render_template('index.html')
 
 
 @app.route('/upload', methods=['POST'])
